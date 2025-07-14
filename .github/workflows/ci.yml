@@ -39,6 +39,19 @@ jobs:
 
   test:
     runs-on: ubuntu-22.04
+    services:
+      mysql_db:
+        image: mysql:9.3.0
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          MYSQL_DATABASE: test_when2meet
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
     steps:
       - name: Check out the codes
         uses: actions/checkout@v2
