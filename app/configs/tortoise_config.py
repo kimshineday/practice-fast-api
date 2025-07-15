@@ -5,14 +5,14 @@ from tortoise.contrib.fastapi import register_tortoise
 from app.configs import config
 
 TORTOISE_APP_MODELS = [
-    # "app.tortoise_models.meeting",
+    "app.tortoise_models.meeting",
     "aerich.models",
 ]
 
 TORTOISE_ORM = {
     "connections": {
         "default": {
-            "engin": "tortoise.backends.mysql",
+            "engine": "tortoise.backends.mysql",
             "credentials": {
                 "host": config.MYSQL_HOST,
                 "port": config.MYSQL_PORT,
@@ -20,12 +20,15 @@ TORTOISE_ORM = {
                 "password": config.MYSQL_PASSWORD,
                 "database": config.MYSQL_DB,
                 "connect_timeout": config.MYSQL_CONNECT_TIMEOUT,
-                "max": config.CONNECTION_POOL_MAXSIZE,
+                "maxsize": config.CONNECTION_POOL_MAXSIZE,
             },
         },
     },
     "apps": {
-        "models": {"models": TORTOISE_APP_MODELS},
+        "default": {
+            "models": TORTOISE_APP_MODELS,
+            "default_connection": "default",
+        }
     },
     "timezone": "Asia/Seoul",
 }
