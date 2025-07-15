@@ -85,11 +85,11 @@ jobs:
           sudo rm /etc/localtime
           sudo ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
-      - name: Start Mysql
-        run: |
-          sudo systemctl start mysql
-          mysql -e "use mysql; FLUSH PRIVILEGES; ALTER USER '${{ env.MYSQL }}'@'localhost' INDENTIFIED BY '${{ secrets.MYSQL_PASSWORD }}';" -uroot -proot
-          mysql -e 'CREATE DATABASE ${{ env.MYSQL_DATABASE }};' -u${{ env.MYSQL_USER }} -p${{ secrets.MYSQL_PASSWORD }}
+#      - name: Start Mysql
+#        run: |
+#          sudo systemctl start mysql
+#          mysql -e "use mysql; FLUSH PRIVILEGES; ALTER USER '${{ env.MYSQL }}'@'localhost' IDENTIFIED BY '${{ secrets.MYSQL_PASSWORD }}';" -uroot -proot
+#          mysql -e 'CREATE DATABASE ${{ env.MYSQL_DATABASE }};' -u${{ env.MYSQL_USER }} -p${{ secrets.MYSQL_PASSWORD }}
 
       - name: Run tests
         run: |
