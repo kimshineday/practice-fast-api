@@ -8,4 +8,5 @@ def get_config() -> Config:
     env_file = project_root / ".env"
     return Config(_env_file=(env_file), _env_file_encoding="utf-8")
 
+
 config = get_config()

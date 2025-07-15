@@ -44,6 +44,7 @@ jobs:
         image: mysql:9.3.0
         env:
           MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
           MYSQL_DATABASE: test_when2meet
         ports:
           - 3306:3306

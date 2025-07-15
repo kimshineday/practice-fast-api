@@ -1,9 +1,8 @@
 import httpx
 from starlette.status import HTTP_200_OK
-from tortoise.contrib.test import TestCase, initializer, finalizer
+from tortoise.contrib.test import TestCase
 
 from app import app
-from app.configs.tortoise_config import TORTOISE_ORM
 from app.tortoise_models.meeting import MeetingModel
 
 
